@@ -1,0 +1,6 @@
+cs50
+Flask
+Flask-Session
+requests
+
+API key = pk_6e9d11ea3c9c4312aa208c21ba8b20a2

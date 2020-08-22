@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    {% if purchase == False %}
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th>Symbol</th>
+                <th>Price</th>
+                <th>Shares</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in dictionary: %}
+            <tr>
+                <td>{{ dictionary[row]["symbol"] }}</td>
+                <td>{{ dictionary[row]["price"] }}</td>
+                <td>{{ dictionary[row]["shares"] }}</td>
+                <td>{{ dictionary[row]["total"] }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>Cash</td>
+                <td></td>
+                <td></td>
+                <td>{{ cash }}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <td colspan = "3"></td>
+            <td style ="font-weight: bold">{{ totalOverall }}</td>
+        </tfoot>
+    </table>
+    <form action="/" method="post">
+        <input autocomplete="off" autofocus class="form-control" name="cash" placeholder="Amount" type="text">
+        <button type="submit" class="btn btn-outline-primary">Add Cash</button>
+    </form>
+
+    {% else %}
+    <div class="alert alert-success" role="alert">
+      Cash added successfully!
+    </div>
+    <p style = "text-align: center">You have added {{ newCash }} to your account. You now have {{ cash }} in cash!</p>
+    {% endif %}
+{% endblock %}

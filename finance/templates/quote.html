@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <form action="/quote" method="post">
+        <div class="form-group">
+            <input autocomplete="on" autofocus class="form-control" name="symbol" placeholder="Symbol" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+
+    {% if form == True %}
+        <table class="table" style="margin-top:50px">
+            <thead class="thead-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Current Price</th>
+                    <th>Symbol</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ price }}</td>
+                <td>{{ symbol }}</td>
+            </tr>
+        </table>
+    {% endif %}
+{% endblock %}
